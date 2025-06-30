@@ -12,11 +12,11 @@ import jakarta.enterprise.context.ApplicationScoped;
 		"Generate inspiring and positive poems in raw JSON format (title and lines) without a code block in one line")
 public interface PoemGeneratorService {
 
-	@InputGuardrails(PoemTopicGuardrail.class)
+	@InputGuardrails(CodeGenerationGuardrail.class)
 	@OutputGuardrails(JsonOutputGuardrail.class)
 	String generatePoem(String topic);
 
-	@InputGuardrails({PoemTopicGuardrail.class, LengthGuardrail.class})
+	@InputGuardrails({CodeGenerationGuardrail.class, LengthGuardrail.class})
 	@OutputGuardrails({JsonOutputGuardrail.class, ContentModerationGuardrail.class})
 	String generatePoemWithMultipleGuardrails(String topic);
 }
