@@ -26,12 +26,12 @@
 
 - name: "devoxx morocco"
   parameters:
-    - "devoxx maroc"
+    - "devoxx morocco"
   expected-output: |
     {
-      "title":"Echoes of Devoxx Maroc",
+      "title":"Echoes of Devoxx Morocco",
       "lines":[
-        "In the heart of Maroc, where ideas bloom,",
+        "In the heart of Morocco, where ideas bloom,",
         "The sands of wisdom shift like dunes,",
         "Devoxx gathers minds to share the loom,",
         "Weaving tech and dreams beneath the moons.",
