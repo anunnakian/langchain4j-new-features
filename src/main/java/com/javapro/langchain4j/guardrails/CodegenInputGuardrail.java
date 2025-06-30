@@ -6,7 +6,7 @@ import io.quarkiverse.langchain4j.guardrails.InputGuardrailResult;
 import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
-public class CodeGenerationGuardrail implements InputGuardrail {
+public class CodegenInputGuardrail implements InputGuardrail {
 
 	@Override
 	public InputGuardrailResult validate(UserMessage userMessage) {

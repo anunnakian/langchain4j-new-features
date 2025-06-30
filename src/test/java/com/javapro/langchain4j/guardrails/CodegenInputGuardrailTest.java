@@ -7,13 +7,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class CodeGenerationGuardrailTest {
+class CodegenInputGuardrailTest {
 
-    private CodeGenerationGuardrail guardrail;
+    private CodegenInputGuardrail guardrail;
 
     @BeforeEach
     void setUp() {
-        guardrail = new CodeGenerationGuardrail();
+        guardrail = new CodegenInputGuardrail();
     }
 
     @Test
