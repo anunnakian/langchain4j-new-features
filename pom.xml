@@ -31,9 +31,33 @@
 
         <dependencies>
             <dependency>
+                <groupId>org.assertj</groupId>
+                <artifactId>assertj-core</artifactId>
+                <version>3.26.0</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
                 <groupId>io.quarkiverse.langchain4j</groupId>
                 <artifactId>quarkus-langchain4j-openai</artifactId>
                 <version>1.0.2</version>
+            </dependency>
+            <dependency>
+                <groupId>io.quarkiverse.langchain4j</groupId>
+                <artifactId>quarkus-langchain4j-testing-scorer-junit5</artifactId>
+                <version>1.0.2</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.quarkiverse.langchain4j</groupId>
+                <artifactId>quarkus-langchain4j-testing-scorer-semantic-similarity</artifactId>
+                <version>1.0.2</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>dev.langchain4j</groupId>
+                <artifactId>langchain4j-embeddings-bge-small-en-v15</artifactId>
+                <version>1.0.0-beta4</version>
+                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>io.quarkus</groupId>
