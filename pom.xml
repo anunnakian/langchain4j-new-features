@@ -60,6 +60,12 @@
                 <scope>test</scope>
             </dependency>
             <dependency>
+                <groupId>io.quarkiverse.langchain4j</groupId>
+                <artifactId>quarkus-langchain4j-testing-scorer-ai-judge</artifactId>
+                <version>1.0.2</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
                 <groupId>io.quarkus</groupId>
                 <artifactId>quarkus-arc</artifactId>
             </dependency>
