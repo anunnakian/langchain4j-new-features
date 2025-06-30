@@ -29,12 +29,8 @@ class PoemGeneratorServiceTest {
             @SampleLocation("src/test/resources/poem-samples.yaml") Samples<String> samples) {
 
         EvaluationReport<String> report = scorer.evaluate(samples,
-                topic -> {
-					String result = poemGeneratorService.generatePoem(topic.get(0));
-					System.out.println(result);
-					return result;
-				},
-                new SemanticSimilarityStrategy(0.8)
+				topic -> poemGeneratorService.generatePoem(topic.get(0)),
+				new SemanticSimilarityStrategy(0.8)
         );
 
         assertThat(report.score()).isGreaterThanOrEqualTo(70);
@@ -52,11 +48,7 @@ class PoemGeneratorServiceTest {
 
 		EvaluationReport<String> report = scorer.evaluate(
 				samples,
-				topic -> {
-					String result = poemGeneratorService.generatePoem(topic.get(0));
-					System.out.println(result);
-					return result;
-				},
+				topic -> poemGeneratorService.generatePoem(topic.get(0)),
 				new AiJudgeStrategy(judgeModel, """
                 You are an AI evaluating a poem and the expected poem.
                 You need to evaluate whether the poems talk about the same topic or not.
