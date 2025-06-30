@@ -4,12 +4,10 @@ import io.quarkiverse.langchain4j.runtime.aiservice.GuardrailException;
 import io.quarkus.test.junit.QuarkusTest;
 import jakarta.inject.Inject;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@Disabled
 @QuarkusTest
 class PoemGeneratorServiceTest {
 
