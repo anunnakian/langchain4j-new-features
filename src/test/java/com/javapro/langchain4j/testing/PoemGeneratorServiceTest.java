@@ -46,7 +46,7 @@ class PoemGeneratorServiceTest {
 			@SampleLocation("src/test/resources/poem-samples.yaml") Samples<String> samples
 	) {
 		var judgeModel = OpenAiChatModel.builder()
-				.apiKey(System.getenv("OPEN_AI_TOKEN"))
+				.apiKey(System.getenv("OPENAI_API_KEY"))
 				.modelName("gpt-4o")
 				.build();
 
