@@ -77,4 +77,25 @@ class PoemGeneratorServiceTest {
 		assertThat(report.scoreForTag("java")).isGreaterThanOrEqualTo(80);
 		assertThat(report.scoreForTag("devoxx")).isGreaterThanOrEqualTo(70);
 	}
+
+	@Test
+	void test_04_Custom_Evaluation_Strategy(
+			@ScorerConfiguration(concurrency = 5) Scorer scorer,
+			@SampleLocation("src/test/resources/poem-samples.yaml") Samples<String> samples) {
+
+		TagPresenceStrategy presenceStrategy = new TagPresenceStrategy();
+
+		EvaluationReport<String> report = scorer.evaluate(
+				samples,
+				topic -> poemGeneratorService.generatePoem(topic.get(0)),
+				presenceStrategy
+		);
+
+		assertThat(report.scoreForTag("java"))
+				.as("Every Java poem must mention ‘Java’")
+				.isGreaterThanOrEqualTo(80);
+		assertThat(report.scoreForTag("devoxx"))
+				.as("Every Devoxx poem must mention ‘Devoxx’")
+				.isGreaterThanOrEqualTo(70);
+	}
 }
