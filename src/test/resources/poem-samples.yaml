@@ -23,6 +23,7 @@
         "Lies a future bright, a boundless space."
       ]
     }
+  tags: ["java"]
 
 - name: "devoxx morocco"
   parameters:
@@ -44,3 +45,4 @@
         "Here at Devoxx, where visions reside,",
         "Dreams take shape, and futures abide."
       ]
+  tags: ["devoxx"]

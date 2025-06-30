@@ -63,4 +63,18 @@ class PoemGeneratorServiceTest {
 
 		assertThat(report.score()).isGreaterThanOrEqualTo(70);
 	}
+
+	@Test
+	void test_04_Semantic_Similarity_Strategy_Per_Tag(
+			@ScorerConfiguration(concurrency = 5) Scorer scorer,
+			@SampleLocation("src/test/resources/poem-samples.yaml") Samples<String> samples) {
+
+		EvaluationReport<String> report = scorer.evaluate(samples,
+				topic -> poemGeneratorService.generatePoem(topic.get(0)),
+				new SemanticSimilarityStrategy(0.8)
+		);
+
+		assertThat(report.scoreForTag("java")).isGreaterThanOrEqualTo(80);
+		assertThat(report.scoreForTag("devoxx")).isGreaterThanOrEqualTo(70);
+	}
 }
