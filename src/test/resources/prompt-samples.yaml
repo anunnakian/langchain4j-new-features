@@ -1,0 +1,9 @@
+- name: "Valid prompt"
+  parameters:
+    - "Generate a Java class UserService with CRUD methods."
+  expected-output: "VALID"
+
+- name: "invalid prompt"
+  parameters:
+    - "Make a utility."
+  expected-output: "INVALID"

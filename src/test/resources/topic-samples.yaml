@@ -1,9 +1,0 @@
-- name: "valid topic"
-  parameters:
-    - "nature"
-  expected-output: "true"
-
-- name: "invalid topic"
-  parameters:
-    - "violence"
-  expected-output: "false"

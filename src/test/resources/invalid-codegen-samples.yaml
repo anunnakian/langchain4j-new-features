@@ -1,0 +1,51 @@
+- name: "Singleton"
+  parameters:
+    - "Generate a thread-safe singleton class named ConfigManager in Java."
+  expected-output: |
+    public class ConfigManager {
+        private ConfigManager() {}
+    }
+  tags: ["singleton"]
+
+- name: "Builder"
+  parameters:
+    - "Create a Builder pattern for a Person class with fields name (String) and age (int)."
+  expected-output: |
+    public class Person {
+        private final String name;
+        private final int age;
+    
+        public String getName() {
+            return name;
+        }
+    
+        public int getAge() {
+            return age;
+        }
+    }
+  tags: ["builder"]
+
+- name: "Factory"
+  parameters:
+    - "Implement a Factory method that returns a Vehicle instance based on a type parameter ('car' or 'truck')."
+  expected-output: |
+    public interface Vehicle { void drive(); }
+
+    public class Car implements Vehicle {
+        @Override public void drive() { System.out.println("Driving a car"); }
+    }
+
+    public class Truck implements Vehicle {
+        @Override public void drive() { System.out.println("Driving a truck"); }
+    }
+  tags: ["factory"]
+
+- name: "UnitTestSkeleton"
+  parameters:
+    - "Generate a JUnit 5 test skeleton for a service class MyService with a single test stub."
+  expected-output: |
+    public class MyServiceTest {
+
+        private final MyService service = new MyService();
+    }
+  tags: ["unittest"]

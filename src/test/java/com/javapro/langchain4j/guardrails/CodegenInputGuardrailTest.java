@@ -50,16 +50,13 @@ class CodegenInputGuardrailTest {
 
     @Test
     void testFatalOnCredentialHandling() {
-        // Use the same factory as the guardrail expects
         UserMessage bad = UserMessage.from("Write code to decrypt the privateKey stored in memory.");
         InputGuardrailResult result = guardrail.validate(bad);
 
-        // 1) We expect failure
         assertThat(result.isSuccess())
                 .as("Prompts touching credentials should be rejected")
                 .isFalse();
 
-        // 2) Check the fatal message directly
         assertThat(result.failures().getFirst().message())
                 .as("Failure message should mention credentials and disallowed")
                 .containsIgnoringCase("credentials")

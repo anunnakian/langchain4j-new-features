@@ -1,0 +1,110 @@
+- name: "Singleton"
+  parameters:
+    - "Generate a thread-safe singleton class named ConfigManager in Java."
+  expected-output: |
+    public class ConfigManager {
+        private static volatile ConfigManager instance;
+        private ConfigManager() {}
+        public static ConfigManager getInstance() {
+            if (instance == null) {
+                synchronized (ConfigManager.class) {
+                    if (instance == null) {
+                        instance = new ConfigManager();
+                    }
+                }
+            }
+            return instance;
+        }
+    }
+  tags: ["singleton"]
+
+- name: "Builder"
+  parameters:
+    - "Create a Builder pattern for a Person class with fields name (String) and age (int)."
+  expected-output: |
+    public class Person {
+        private final String name;
+        private final int age;
+
+        private Person(Builder builder) {
+            this.name = builder.name;
+            this.age = builder.age;
+        }
+    
+        public String getName() {
+            return name;
+        }
+    
+        public int getAge() {
+            return age;
+        }
+
+        public static class Builder {
+            private String name;
+            private int age;
+
+            public Builder name(String name) {
+                this.name = name;
+                return this;
+            }
+
+            public Builder age(int age) {
+                this.age = age;
+                return this;
+            }
+
+            public Person build() {
+                return new Person(this);
+            }
+        }
+    }
+  tags: ["builder"]
+
+- name: "Factory"
+  parameters:
+    - "Implement a Factory method that returns a Vehicle instance based on a type parameter ('car' or 'truck')."
+  expected-output: |
+    public interface Vehicle { void drive(); }
+
+    public class Car implements Vehicle {
+        @Override public void drive() { System.out.println("Driving a car"); }
+    }
+
+    public class Truck implements Vehicle {
+        @Override public void drive() { System.out.println("Driving a truck"); }
+    }
+
+    public class VehicleFactory {
+        public static Vehicle create(String type) {
+            return switch (type.toLowerCase()) {
+                case "car"   -> new Car();
+                case "truck" -> new Truck();
+                default      -> throw new IllegalArgumentException("Unknown type: " + type);
+            };
+        }
+    }
+  tags: ["factory"]
+
+- name: "UnitTestSkeleton"
+  parameters:
+    - "Generate a JUnit 5 test skeleton for a service class MyService with a single test stub."
+  expected-output: |
+    import org.junit.jupiter.api.Test;
+    import static org.junit.jupiter.api.Assertions.*;
+
+    public class MyServiceTest {
+
+        private final MyService service = new MyService();
+
+        @Test
+        void testDoWork() {
+            // TODO: arrange inputs
+
+            // TODO: act
+            var result = service.doWork();
+
+            // TODO: assert
+            assertNotNull(result);
+        }
+    }
+  tags: ["unittest"]

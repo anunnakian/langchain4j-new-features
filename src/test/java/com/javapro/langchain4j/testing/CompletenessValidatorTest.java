@@ -1,6 +1,6 @@
 package com.javapro.langchain4j.testing;
 
-import com.javapro.langchain4j.guardrails.TopicValidationService;
+import com.javapro.langchain4j.guardrails.CompletenessValidator;
 import io.quarkiverse.langchain4j.scorer.junit5.AiScorer;
 import io.quarkiverse.langchain4j.scorer.junit5.SampleLocation;
 import io.quarkiverse.langchain4j.scorer.junit5.ScorerConfiguration;
@@ -15,19 +15,21 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @AiScorer
 @QuarkusTest
-class TopicValidationServiceTest {
+class CompletenessValidatorTest {
 
     @Inject
-    TopicValidationService topicValidationService;
+    CompletenessValidator completenessValidator;
 
     @Test
-    void test_01_Simple_Evaluation_Strategy(
+    void test_01_CompletenessValidator(
             @ScorerConfiguration(concurrency = 5) Scorer scorer,
-            @SampleLocation("src/test/resources/topic-samples.yaml") Samples<String> samples) {
+            @SampleLocation("src/test/resources/prompt-samples.yaml") Samples<String> samples) {
 
-        EvaluationReport<String> report = scorer.evaluate(samples,
-                topic -> Boolean.toString(topicValidationService.isTopicAppropriate(topic.get(0))),
-                (sample, output) -> sample.expectedOutput().equals(output));
+        EvaluationReport<String> report = scorer.evaluate(
+                samples,
+                prompt -> completenessValidator.isRequestComplete(prompt.get(0)),
+                (sample, verdict) -> sample.expectedOutput().equalsIgnoreCase(verdict)
+        );
 
         assertThat(report.score()).isEqualTo(100);
     }
