@@ -12,8 +12,9 @@ public class CodegenOutputGuardrail implements OutputGuardrail {
     public OutputGuardrailResult validate(AiMessage aiMessage) {
         String code = aiMessage.text();
 
-        if (code.contains("Runtime.getRuntime().exec")) {
-            return fatal("Generated code must not call Runtime.exec().");
+        if (code.contains("Runtime.getRuntime().exec")
+            || code.contains("ProcessBuilder.command")) {
+            return fatal("Generated code must not call Runtime.exec() or ProcessBuilder.command.");
         }
 
         return OutputGuardrailResult.success();

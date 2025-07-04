@@ -29,7 +29,7 @@ class JavaDeveloperTest {
         String request = "Generate function that use ls command to display a list of files";
 
         assertThatThrownBy(() -> javaDeveloper.writeCleanCompliantCode(request)).isInstanceOf(GuardrailException.class)
-                .hasMessageContaining("Generated code must not call Runtime.exec().");
+                .hasMessageContaining("Generated code must not call Runtime.exec()");
     }
 
     @Test
