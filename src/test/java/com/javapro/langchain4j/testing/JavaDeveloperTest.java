@@ -18,10 +18,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @AiScorer
 @QuarkusTest
-class CodeGeneratorServiceTest {
+class JavaDeveloperTest {
 
 	@Inject
-	CodeGeneratorService codeGeneratorService;
+	JavaDeveloper javaDeveloper;
 
 	@Test
     void test_02_Semantic_Similarity_Strategy(
@@ -31,7 +31,7 @@ class CodeGeneratorServiceTest {
 		// Evaluate generateCode() outputs against our expected code samples
 		EvaluationReport<String> report = scorer.evaluate(
 				samples,
-				prompt -> codeGeneratorService.generateCode(prompt.get(0)),
+				prompt -> javaDeveloper.writeCode(prompt.get(0)),
 				new SemanticSimilarityStrategy(0.85)  // 85% similarity threshold
 		);
 
@@ -61,7 +61,7 @@ class CodeGeneratorServiceTest {
 
 		EvaluationReport<String> report = scorer.evaluate(
 				samples,
-				prompt -> codeGeneratorService.generateCode(prompt.get(0)),
+				prompt -> javaDeveloper.writeCode(prompt.get(0)),
 				new AiJudgeStrategy(judgeModel, evaluationPrompt)
 		);
 
@@ -79,7 +79,7 @@ class CodeGeneratorServiceTest {
 		// Evaluate generateCode() outputs against our expected code samples
 		EvaluationReport<String> report = scorer.evaluate(
 				samples,
-				prompt -> codeGeneratorService.generateCode(prompt.get(0)),
+				prompt -> javaDeveloper.writeCode(prompt.get(0)),
 				new SemanticSimilarityStrategy(0.85)  // 85% similarity threshold
 		);
 
@@ -115,7 +115,7 @@ class CodeGeneratorServiceTest {
 
 		EvaluationReport<String> report = scorer.evaluate(
 				samples,
-				topic -> codeGeneratorService.generateCode(topic.get(0)),
+				topic -> javaDeveloper.writeCode(topic.get(0)),
 				presenceStrategy
 		);
 
@@ -131,7 +131,7 @@ class CodeGeneratorServiceTest {
 
 		EvaluationReport<String> report = scorer.evaluate(
 				samples,
-				topic -> codeGeneratorService.generateCode(topic.get(0)),
+				topic -> javaDeveloper.writeCode(topic.get(0)),
 				presenceStrategy
 		);
 

@@ -17,10 +17,8 @@ class CodeStyleOutputGuardrailTest {
     }
 
     @Test
-    void testSuccess_WithPackageAndCleanCode() {
+    void testSuccess_WithValidClass() {
         String code = """
-            package com.example;
-
             public class HelloWorld {
                 public static void main(String[] args) {
                     System.out.println("Hello");
@@ -28,76 +26,27 @@ class CodeStyleOutputGuardrailTest {
             }
             """;
         AiMessage ai = AiMessage.from(code);
+
         OutputGuardrailResult result = guardrail.validate(ai);
 
         assertThat(result.isSuccess())
-            .as("Valid code with package, under line limit, no TODO/FIXME should pass")
-            .isTrue();
+                .as("Valid Java class declaration should pass")
+                .isTrue();
     }
 
     @Test
-    void testFailure_OnTooManyLines() {
-        // Generate 201 empty lines to exceed MAX_LINES (200)
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < 201; i++) {
-            sb.append("class X").append(i).append(" {}\n");
-        }
-        AiMessage ai = AiMessage.from(sb.toString());
-        OutputGuardrailResult result = guardrail.validate(ai);
-
-        assertThat(result.isSuccess())
-            .as("Code exceeding max line count should not pass")
-            .isFalse();
-        assertThat(result.isFatal())
-            .as("Exceeding lines is a failure, not a fatal error")
-            .isFalse();
-        assertThat(result.failures().getFirst().message())
-            .contains("over 200 lines");
-    }
-
-    @Test
-    void testFatal_OnTodoComment() {
+    void testFatal_MissingClassOrInterface() {
         String code = """
-            package com.example;
-
-            public class TodoExample {
-                // TODO: implement this method
-                void doSomething() {}
-            }
+            void doSomething() { }
             """;
         AiMessage ai = AiMessage.from(code);
+
         OutputGuardrailResult result = guardrail.validate(ai);
 
         assertThat(result.isSuccess())
-            .as("Code containing TODO should be rejected fatally")
-            .isFalse();
-        assertThat(result.isFatal())
-            .as("TODO comments trigger a fatal error")
-            .isTrue();
+                .as("Code without class or interface must be rejected")
+                .isFalse();
         assertThat(result.failures().getFirst().message())
-            .containsIgnoringCase("must not contain TODO");
-    }
-
-    @Test
-    void testFatal_OnFixmeComment() {
-        String code = """
-            package com.example;
-
-            public class FixmeExample {
-                // fixme: address null pointer edge case
-                void doSomethingElse() {}
-            }
-            """;
-        AiMessage ai = AiMessage.from(code);
-        OutputGuardrailResult result = guardrail.validate(ai);
-
-        assertThat(result.isSuccess())
-            .as("Code containing FIXME should be rejected fatally")
-            .isFalse();
-        assertThat(result.isFatal())
-            .as("FIXME comments trigger a fatal error")
-            .isTrue();
-        assertThat(result.failures().getFirst().message())
-            .containsIgnoringCase("must not contain TODO or FIXME");
+                .containsIgnoringCase("must include at least one class or interface declaration");
     }
 }

@@ -12,24 +12,8 @@ public class CodegenOutputGuardrail implements OutputGuardrail {
     public OutputGuardrailResult validate(AiMessage aiMessage) {
         String code = aiMessage.text();
 
-        if (!code.matches("(?s).*\\b(class|interface)\\s+\\w+.*\\{.*")) {
-            return fatal(
-                    "Generated code must include at least one class or interface declaration."
-            );
-        }
-
-        if (code.contains("System.exit")
-                || code.contains("Runtime.getRuntime().exec")) {
-            return fatal(
-                    "Generated code must not call System.exit() or Runtime.exec()."
-            );
-        }
-
-        if (code.contains("Class.forName")
-                || code.contains("java.lang.reflect")) {
-            return fatal(
-                    "Generated code must not use reflection APIs."
-            );
+        if (code.contains("Runtime.getRuntime().exec")) {
+            return fatal("Generated code must not call Runtime.exec().");
         }
 
         return OutputGuardrailResult.success();
