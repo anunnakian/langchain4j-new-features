@@ -1,4 +1,4 @@
-package com.javapro.langchain4j.guardrails;
+package com.javapro.langchain4j.guardrails.v5;
 
 import io.quarkiverse.langchain4j.guardrails.InputGuardrail;
 import io.quarkiverse.langchain4j.guardrails.InputGuardrailResult;

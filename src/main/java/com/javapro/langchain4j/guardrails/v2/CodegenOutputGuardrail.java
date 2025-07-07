@@ -1,4 +1,4 @@
-package com.javapro.langchain4j.guardrails;
+package com.javapro.langchain4j.guardrails.v2;
 
 import dev.langchain4j.data.message.AiMessage;
 import io.quarkiverse.langchain4j.guardrails.OutputGuardrail;
@@ -12,9 +12,8 @@ public class CodegenOutputGuardrail implements OutputGuardrail {
     public OutputGuardrailResult validate(AiMessage aiMessage) {
         String code = aiMessage.text();
 
-        if (code.contains("Runtime.getRuntime().exec")
-            || code.contains("ProcessBuilder.command")) {
-            return fatal("Generated code must not call Runtime.exec() or ProcessBuilder.command.");
+        if (code.contains("Runtime.getRuntime().exec")) {
+            return fatal("Generated code must not call Runtime.exec().");
         }
 
         return OutputGuardrailResult.success();

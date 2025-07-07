@@ -1,6 +1,6 @@
 package com.javapro.langchain4j.testing;
 
-import com.javapro.langchain4j.guardrails.CompletenessValidator;
+import com.javapro.langchain4j.guardrails.v5.CompletenessValidator;
 import io.quarkiverse.langchain4j.scorer.junit5.AiScorer;
 import io.quarkiverse.langchain4j.scorer.junit5.SampleLocation;
 import io.quarkiverse.langchain4j.scorer.junit5.ScorerConfiguration;

@@ -1,4 +1,4 @@
-package com.javapro.langchain4j.guardrails;
+package com.javapro.langchain4j.guardrails.v5;
 
 import dev.langchain4j.service.SystemMessage;
 import io.quarkiverse.langchain4j.RegisterAiService;

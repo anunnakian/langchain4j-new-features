@@ -1,6 +1,7 @@
 package com.javapro.langchain4j.testing;
 
 import com.javapro.langchain4j.guardrails.*;
+import com.javapro.langchain4j.guardrails.v5.JavaDeveloper;
 import dev.langchain4j.model.openai.OpenAiChatModel;
 import io.quarkiverse.langchain4j.scorer.junit5.AiScorer;
 import io.quarkiverse.langchain4j.scorer.junit5.SampleLocation;

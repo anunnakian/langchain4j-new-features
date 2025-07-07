@@ -1,4 +1,4 @@
-package com.javapro.langchain4j.guardrails;
+package com.javapro.langchain4j.guardrails.v5;
 
 import static org.assertj.core.api.Assertions.*;
 

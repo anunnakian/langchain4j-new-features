@@ -1,4 +1,4 @@
-package com.javapro.langchain4j.guardrails;
+package com.javapro.langchain4j.guardrails.v4;
 
 import dev.langchain4j.data.message.AiMessage;
 import io.quarkiverse.langchain4j.guardrails.OutputGuardrail;
