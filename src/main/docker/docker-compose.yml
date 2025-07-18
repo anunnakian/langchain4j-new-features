@@ -6,6 +6,14 @@ services:
     ports:
       - "9090:9090"
 
+  tempo:
+    image: grafana/tempo
+    command: [ "-config.file=/etc/tempo.yml" ]
+    volumes:
+      - ./tempo.yml:/etc/tempo.yml
+    ports:
+      - "3200:3200"
+
   grafana:
     image: grafana/grafana
     environment:
@@ -17,3 +25,4 @@ services:
       - "3000:3000"
     depends_on:
       - prometheus
+      - tempo
