@@ -295,6 +295,7 @@
 
                 <button class="generate-btn" type="submit">
                     <span>Generate Code</span>
+                    <div class="loading-spinner" id="loadingSpinner"></div>
                 </button>
             </form>
         </div>
@@ -312,5 +313,19 @@
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("form");
+        const spinner = document.getElementById("loadingSpinner");
+        const button = form.querySelector("button");
+
+        form.addEventListener("submit", function (e) {
+            // Show the spinner
+            spinner.style.display = "inline-block";
+            // Disable the button to prevent multiple submissions
+            button.disabled = true;
+        });
+    });
+</script>
 </body>
 </html>
