@@ -267,6 +267,9 @@
             }
         }
     </style>
+    <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-java.min.js"></script>
 </head>
 <body>
 <div class="container">
@@ -302,12 +305,9 @@
 
         <div class="output-section">
             <h2 class="section-title">Generated Code</h2>
-            <div class="code-output">
-                {#if result}
-                {result}
-                {:else}
-                // Your generated Java code will appear here.
-                // Enter your request and click "Generate Code"
+            <div>
+                {#if result != null && !result.isEmpty()}
+                <pre><code class="language-java" class="code-output">{result}</code></pre>
                 {/if}
             </div>
         </div>
