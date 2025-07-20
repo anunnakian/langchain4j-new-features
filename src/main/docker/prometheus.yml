@@ -1,8 +1,0 @@
-global:
-  scrape_interval: 5s # How often to scrape targets by default.
-
-scrape_configs:
-  - job_name: 'langchain4j_production_features'
-    metrics_path: '/q/metrics'
-    static_configs:
-      - targets: ['host.docker.internal:8080'] # Replace with your Quarkus app's hostname and port.
