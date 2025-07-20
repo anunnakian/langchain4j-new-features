@@ -1,22 +1,23 @@
 package com.javapro.langchain4j;
 
-import com.javapro.langchain4j.guardrails.v5.JavaDeveloper;
-import io.quarkiverse.langchain4j.guardrails.Guardrail;
+import com.javapro.langchain4j.guardrails.v2.JavaDeveloper;
 import io.quarkiverse.langchain4j.runtime.aiservice.GuardrailException;
 import io.quarkus.qute.Template;
 import io.quarkus.qute.TemplateInstance;
 import io.smallrye.common.annotation.Blocking;
-import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 
 @Path("/codegen")
 public class CodegenController {
 
-    @Inject Template codegen;
-
-    @Inject
+    Template codegen;
     JavaDeveloper ai;
+
+    public CodegenController(Template codegen, JavaDeveloper ai) {
+        this.ai = ai;
+        this.codegen = codegen;
+    }
 
     @GET
     @Produces(MediaType.TEXT_HTML)

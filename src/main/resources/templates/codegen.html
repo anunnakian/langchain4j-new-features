@@ -45,11 +45,20 @@
             opacity: 0.9;
         }
 
+        /* ----------- LAYOUT FIXES ----------- */
+        /* Make both sections share 50% width and stay equal height. */
         .main-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr; /* 50 % / 50 % */
             gap: 2rem;
             padding: 2rem;
+            height: 70vh; /* Give the row a fixed viewport‑relative height */
+        }
+
+        /* If content overflows, scroll inside the section instead of stretching the grid row */
+        .input-section,
+        .output-section {
+            overflow-y: auto;
         }
 
         .input-section {
@@ -130,6 +139,7 @@
             transform: none;
         }
 
+        /* Let the output always fit within its parent, scrolling as needed */
         .code-output {
             background: #0f172a;
             border-radius: 8px;
@@ -140,7 +150,7 @@
             color: #e2e8f0;
             white-space: pre-wrap;
             min-height: 300px;
-            max-height: 500px;
+            height: 100%;
             overflow-y: auto;
             border: 1px solid #334155;
         }
@@ -254,8 +264,9 @@
 
         @media (max-width: 768px) {
             .main-content {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; /* Stack on mobile */
                 gap: 1rem;
+                height: auto; /* Let it grow naturally on small screens */
             }
 
             .header h1 {
@@ -290,11 +301,7 @@
           <textarea
                   name="prompt"
                   class="request-textarea"
-                  maxlength="2000"
-                  oninput="updateCharCount()"
                   placeholder="Describe the Java code you want to generate...">{prompt}</textarea>
-
-                <div class="char-count" id="charCount">{prompt.length ?: 0} / 2000</div>
 
                 <button class="generate-btn" type="submit">
                     <span>Generate Code</span>
@@ -307,13 +314,13 @@
             <h2 class="section-title">Generated Code</h2>
             <div>
                 {#if result != null && !result.isEmpty()}
-                <pre><code class="language-java" class="code-output">{result}</code></pre>
+                <pre class="code-output"><code class="language-java">{result}</code></pre>
                 {/if}
             </div>
         </div>
     </div>
 </div>
-<script>
+<script type="javascript">
     document.addEventListener("DOMContentLoaded", function () {
         const form = document.querySelector("form");
         const spinner = document.getElementById("loadingSpinner");
