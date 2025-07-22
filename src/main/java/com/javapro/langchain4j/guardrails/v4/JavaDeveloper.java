@@ -19,5 +19,5 @@ public interface JavaDeveloper {
 		without any markdown or code fences or code block.
 		"""
 	)
-	String writeCode(String topic);
+	String writeCode(String request);
 }

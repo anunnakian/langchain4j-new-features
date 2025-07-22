@@ -1,6 +1,5 @@
 package com.javapro.langchain4j.testing;
 
-import com.javapro.langchain4j.guardrails.*;
 import com.javapro.langchain4j.guardrails.v5.JavaDeveloper;
 import dev.langchain4j.model.openai.OpenAiChatModel;
 import io.quarkiverse.langchain4j.scorer.junit5.AiScorer;
@@ -29,7 +28,6 @@ class JavaDeveloperTest {
             @ScorerConfiguration(concurrency = 5) Scorer scorer,
             @SampleLocation("src/test/resources/codegen-samples.yaml") Samples<String> samples) {
 
-		// Evaluate generateCode() outputs against our expected code samples
 		EvaluationReport<String> report = scorer.evaluate(
 				samples,
 				prompt -> javaDeveloper.writeCode(prompt.get(0)),
@@ -112,7 +110,7 @@ class JavaDeveloperTest {
 			@ScorerConfiguration(concurrency = 5) Scorer scorer,
 			@SampleLocation("src/test/resources/codegen-samples.yaml") Samples<String> samples) {
 
-		EditDistanceStrategy presenceStrategy = new EditDistanceStrategy(0.4);
+		LevenshteinDistanceStrategy presenceStrategy = new LevenshteinDistanceStrategy(0.4);
 
 		EvaluationReport<String> report = scorer.evaluate(
 				samples,
@@ -128,7 +126,7 @@ class JavaDeveloperTest {
 			@ScorerConfiguration(concurrency = 5) Scorer scorer,
 			@SampleLocation("src/test/resources/invalid-codegen-samples.yaml") Samples<String> samples) {
 
-		EditDistanceStrategy presenceStrategy = new EditDistanceStrategy(0.4);
+		LevenshteinDistanceStrategy presenceStrategy = new LevenshteinDistanceStrategy(0.4);
 
 		EvaluationReport<String> report = scorer.evaluate(
 				samples,

@@ -13,7 +13,7 @@ public class CodegenInputGuardrail implements InputGuardrail {
 		String prompt = userMessage.singleText();
 
 		// Disallow dangerous or undesirable code patterns
-		if (prompt.toLowerCase().contains("runtime.getruntime().exec")) {
+		if (prompt.toLowerCase().contains("processbuilder")) {
 			return fatal("Prompt requests generation of unsafe or system-level code.");
 		}
 

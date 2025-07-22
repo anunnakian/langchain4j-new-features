@@ -1,6 +1,6 @@
 package com.javapro.langchain4j;
 
-import com.javapro.langchain4j.guardrails.v2.JavaDeveloper;
+import com.javapro.langchain4j.guardrails.v5.JavaDeveloper;
 import io.quarkiverse.langchain4j.runtime.aiservice.GuardrailException;
 import io.quarkus.qute.Template;
 import io.quarkus.qute.TemplateInstance;

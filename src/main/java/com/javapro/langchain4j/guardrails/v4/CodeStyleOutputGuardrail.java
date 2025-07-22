@@ -13,7 +13,9 @@ public class CodeStyleOutputGuardrail implements OutputGuardrail {
         String code = aiMessage.text();
 
         if (!code.matches("(?s).*\\b(class|interface)\\s+\\w+.*\\{.*")) {
-            return fatal("Generated code must include at least one class or interface declaration.");
+            return reprompt(
+                    "Generated code must include at least one class or interface declaration.",
+                    "Generate that code inside a class or interface");
         }
 
         return OutputGuardrailResult.success();
