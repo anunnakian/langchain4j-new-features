@@ -1,7 +1,7 @@
 package com.javapro.langchain4j.guardrails.v5;
 
-import io.quarkiverse.langchain4j.guardrails.InputGuardrail;
-import io.quarkiverse.langchain4j.guardrails.InputGuardrailResult;
+import dev.langchain4j.guardrail.InputGuardrail;
+import dev.langchain4j.guardrail.InputGuardrailResult;
 import dev.langchain4j.data.message.UserMessage;
 import jakarta.enterprise.context.ApplicationScoped;
 

@@ -4,8 +4,8 @@ import com.javapro.langchain4j.guardrails.v2.CodegenOutputGuardrail;
 import com.javapro.langchain4j.guardrails.v3.CodegenInputGuardrail;
 import dev.langchain4j.service.SystemMessage;
 import io.quarkiverse.langchain4j.RegisterAiService;
-import io.quarkiverse.langchain4j.guardrails.InputGuardrails;
-import io.quarkiverse.langchain4j.guardrails.OutputGuardrails;
+import dev.langchain4j.service.guardrail.InputGuardrails;
+import dev.langchain4j.service.guardrail.OutputGuardrails;
 import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped

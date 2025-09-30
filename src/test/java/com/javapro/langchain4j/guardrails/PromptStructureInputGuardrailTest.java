@@ -2,7 +2,7 @@ package com.javapro.langchain4j.guardrails;
 
 import static org.assertj.core.api.Assertions.*;
 
-import io.quarkiverse.langchain4j.guardrails.InputGuardrailResult;
+import dev.langchain4j.guardrail.InputGuardrailResult;
 import dev.langchain4j.data.message.UserMessage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

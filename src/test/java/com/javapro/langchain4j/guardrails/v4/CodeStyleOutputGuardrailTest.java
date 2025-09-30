@@ -1,6 +1,6 @@
 package com.javapro.langchain4j.guardrails.v4;
 
-import io.quarkiverse.langchain4j.guardrails.OutputGuardrailResult;
+import dev.langchain4j.guardrail.OutputGuardrailResult;
 import dev.langchain4j.data.message.AiMessage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

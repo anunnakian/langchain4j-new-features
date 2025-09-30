@@ -2,7 +2,7 @@ package com.javapro.langchain4j.guardrails.v2;
 
 import dev.langchain4j.service.SystemMessage;
 import io.quarkiverse.langchain4j.RegisterAiService;
-import io.quarkiverse.langchain4j.guardrails.OutputGuardrails;
+import dev.langchain4j.service.guardrail.OutputGuardrails;
 import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
