@@ -5,10 +5,12 @@ import io.quarkiverse.langchain4j.runtime.aiservice.GuardrailException;
 import io.quarkus.qute.Template;
 import io.quarkus.qute.TemplateInstance;
 import io.smallrye.common.annotation.Blocking;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 
 @Path("/codegen")
+@ApplicationScoped
 public class CodegenController {
 
     Template codegen;
