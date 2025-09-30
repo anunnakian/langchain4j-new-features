@@ -1,6 +1,6 @@
 package com.javapro.langchain4j;
 
-import com.javapro.langchain4j.guardrails.v1.JavaDeveloper;
+import com.javapro.langchain4j.guardrails.v2.JavaDeveloper;
 import dev.langchain4j.guardrail.InputGuardrailException;
 import dev.langchain4j.guardrail.OutputGuardrailException;
 import io.quarkus.qute.Template;
