@@ -12,8 +12,8 @@ import jakarta.enterprise.context.ApplicationScoped;
 @RegisterAiService
 public interface JavaDeveloper {
 
-	@InputGuardrails(CodegenInputGuardrail.class)
-	@OutputGuardrails({CodegenOutputGuardrail.class, CodeStyleOutputGuardrail.class})
+	@InputGuardrails({CodegenInputGuardrail.class, PasswordProtectorInputGuardrail.class})
+	@OutputGuardrails(CodegenOutputGuardrail.class)
 	@SystemMessage("""
 		You are a helpful code generator. Generate Java code and return it as raw code
 		without any markdown or code fences or code block.

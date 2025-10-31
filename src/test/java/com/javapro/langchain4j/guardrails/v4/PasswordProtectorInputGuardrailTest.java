@@ -1,19 +1,18 @@
 package com.javapro.langchain4j.guardrails.v4;
 
-import dev.langchain4j.guardrail.OutputGuardrailResult;
-import dev.langchain4j.data.message.AiMessage;
+import dev.langchain4j.data.message.UserMessage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
-class CodeStyleOutputGuardrailTest {
+class PasswordProtectorInputGuardrailTest {
 
-    private CodeStyleOutputGuardrail guardrail;
+    private PasswordProtectorInputGuardrail guardrail;
 
     @BeforeEach
     void setUp() {
-        guardrail = new CodeStyleOutputGuardrail();
+        guardrail = new PasswordProtectorInputGuardrail();
     }
 
     @Test
@@ -25,9 +24,9 @@ class CodeStyleOutputGuardrailTest {
                 }
             }
             """;
-        AiMessage ai = AiMessage.from(code);
+        UserMessage request = UserMessage.from(code);
 
-        OutputGuardrailResult result = guardrail.validate(ai);
+        var result = guardrail.validate(request);
 
         assertThat(result.isSuccess())
                 .as("Valid Java class declaration should pass")
@@ -39,9 +38,9 @@ class CodeStyleOutputGuardrailTest {
         String code = """
             void doSomething() { }
             """;
-        AiMessage ai = AiMessage.from(code);
+        UserMessage request = UserMessage.from(code);
 
-        OutputGuardrailResult result = guardrail.validate(ai);
+        var result = guardrail.validate(request);
 
         assertThat(result.isSuccess())
                 .as("Code without class or interface must be rejected")
