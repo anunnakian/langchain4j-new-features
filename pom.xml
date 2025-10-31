@@ -86,12 +86,6 @@
             <groupId>io.quarkiverse.qute.web</groupId>
             <artifactId>quarkus-qute-web</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>dev.langchain4j</groupId>-->
-<!--            <artifactId>langchain4j-embeddings-bge-small-en-v15</artifactId>-->
-<!--            <version>1.0.0-beta4</version>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>io.quarkiverse.langchain4j</groupId>
             <artifactId>quarkus-langchain4j-testing-scorer-ai-judge</artifactId>

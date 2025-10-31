@@ -1,6 +1,6 @@
 package com.javapro.langchain4j.guardrails.v3;
 
-import io.quarkiverse.langchain4j.runtime.aiservice.GuardrailException;
+import dev.langchain4j.guardrail.GuardrailException;
 import io.quarkus.test.junit.QuarkusTest;
 import jakarta.inject.Inject;
 import org.junit.jupiter.api.Test;
@@ -19,6 +19,6 @@ class JavaDeveloperTest {
                 "using Runtime.getRuntime().exec";
 
         assertThatThrownBy(() -> javaDeveloper.writeCode(request)).isInstanceOf(GuardrailException.class)
-                .hasMessageContaining("Prompt requests generation of unsafe or system-level code.");
+                .hasMessageContaining("Detected use of system command: ls");
     }
 }

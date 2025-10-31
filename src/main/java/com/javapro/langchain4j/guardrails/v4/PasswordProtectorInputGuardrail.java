@@ -12,7 +12,7 @@ public class PasswordProtectorInputGuardrail implements InputGuardrail {
     public InputGuardrailResult validate(UserMessage message) {
         String request = message.singleText();
 
-        if (!PasswordDetector.detectPasswordsInText(request).isEmpty()) {
+        if (PasswordDetector.detectPasswordsInText(request)) {
             return fatal("You have tried to send sensitive data to the LLM. Be careful !");
         }
 

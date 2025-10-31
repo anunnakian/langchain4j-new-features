@@ -1,6 +1,6 @@
 package com.javapro.langchain4j.guardrails.v5;
 
-import io.quarkiverse.langchain4j.runtime.aiservice.GuardrailException;
+import dev.langchain4j.guardrail.GuardrailException;
 import io.quarkus.test.junit.QuarkusTest;
 import jakarta.inject.Inject;
 import org.junit.jupiter.api.Test;
