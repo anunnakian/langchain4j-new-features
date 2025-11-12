@@ -9,7 +9,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 public interface CompletenessValidator {
 
     @SystemMessage("You are a code generation prompt reviewer." +
-            "Check if the user prompt specifies a valid Java class or method name, " +
+            "Check if the user prompt specifies a valid Java class and/or method name, " +
             "and describes what it should do. Reply with 'VALID' or 'INVALID'.")
     String isRequestComplete(String request);
 }
