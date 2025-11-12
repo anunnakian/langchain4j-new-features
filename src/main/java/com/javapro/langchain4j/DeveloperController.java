@@ -3,15 +3,10 @@ package com.javapro.langchain4j;
 import com.javapro.langchain4j.guardrails.v1.JavaDeveloper;
 import dev.langchain4j.guardrail.InputGuardrailException;
 import dev.langchain4j.guardrail.OutputGuardrailException;
-import dev.langchain4j.model.chat.ChatModel;
-import dev.langchain4j.model.openai.OpenAiChatModel;
-import dev.langchain4j.service.AiServices;
 import io.quarkus.qute.Template;
 import io.quarkus.qute.TemplateInstance;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
-
-import static dev.langchain4j.model.openai.OpenAiChatModelName.GPT_4_O_MINI;
 
 @Path("/")
 public class DeveloperController {
