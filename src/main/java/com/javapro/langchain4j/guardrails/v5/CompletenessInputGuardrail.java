@@ -21,7 +21,7 @@ public class CompletenessInputGuardrail implements InputGuardrail {
 
         if (!"VALID".equalsIgnoreCase(conversation)) {
             return fatal(
-                "Prompt is incomplete: please specify a class and/or method name and describe desired behavior."
+                "Prompt is incomplete or not valid: please specify a class and/or method name and describe desired behavior."
             );
         }
 
