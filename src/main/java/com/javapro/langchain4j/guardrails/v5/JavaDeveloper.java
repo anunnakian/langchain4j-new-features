@@ -7,7 +7,9 @@ import dev.langchain4j.service.SystemMessage;
 import io.quarkiverse.langchain4j.RegisterAiService;
 import dev.langchain4j.service.guardrail.InputGuardrails;
 import dev.langchain4j.service.guardrail.OutputGuardrails;
+import jakarta.enterprise.context.ApplicationScoped;
 
+@ApplicationScoped
 @RegisterAiService
 @SystemMessage("""
     You are an expert Java developer.

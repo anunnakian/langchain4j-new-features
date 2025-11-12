@@ -62,7 +62,7 @@
 
 - name: "Factory"
   parameters:
-    - "Implement a Factory method that returns a Vehicle instance based on a type parameter ('car' or 'truck')."
+    - "Implement a Factory class named VehicleFactory with method that returns a Vehicle instance based on a type parameter ('car' or 'truck')."
   expected-output: |
     public interface Vehicle { void drive(); }
 
